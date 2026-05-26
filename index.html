@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alumni Control Room | FK UB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
+        <div class="sidebar-top">
+          <div>
+            <p class="eyebrow">System dashboard</p>
+            <h1>Alumni Control Room</h1>
+          </div>
+          <button class="icon-button sidebar-close" id="closeSidebar" type="button" aria-label="Tutup sidebar">×</button>
+        </div>
+
+        <p class="sidebar-copy">Anda dapat mencari alumni, wilayah, skill gap, atau employability lalu panel yang relevan akan muncul.</p>
+
+        <label class="search-panel" for="searchInput">
+          <span>Cari kata kunci</span>
+          <input id="searchInput" type="search" placeholder="Coba: Jakarta, skill gap, employability, alumni" autocomplete="off" />
+          <small id="searchMeta">Tekan Enter untuk lompat ke halaman paling relevan.</small>
+        </label>
+
+        <nav class="sidebar-nav" id="sidebarNav">
+          <a href="#overview" data-route="overview">Control room</a>
+          <a href="#visual" data-route="visual">Sebaran</a>
+          <a href="#roadmap" data-route="roadmap">Milestone</a>
+          <a href="#investment" data-route="investment">LAM-PTKes</a>
+          <a href="#ecosystem" data-route="ecosystem">Ekosistem sistem</a>
+        </nav>
+
+        <div class="sidebar-note card soft">
+          <div class="panel-label">Mode interaktif</div>
+          <p>Ketik kata kunci lalu tekan Enter untuk pindah ke halaman yang paling cocok. Kartu, diagram, dan ringkasan akan ikut menyesuaikan seperti portal sistem sungguhan.</p>
+        </div>
+      </aside>
+
+      <div class="backdrop" id="backdrop" hidden></div>
+
+      <main class="main">
+        <header class="topbar card">
+          <button class="icon-button sidebar-open" id="openSidebar" type="button" aria-label="Buka sidebar">☰</button>
+          <div class="topbar-copy">
+            <p class="eyebrow" id="pageKicker">System dashboard</p>
+            <h2 id="pageTitle">Alumni Control Room</h2>
+            <p id="pageSubtitle">BI Dashboard menampilkan sebaran alumni, skill gap, dan employability agar pengguna dapat mengambil keputusan lebih mudah.</p>
+          </div>
+          <div class="topbar-meta">
+            <span id="resultCount" class="section-chip">0 hasil</span>
+            <button class="icon-button clear-button" id="clearSearch" type="button" aria-label="Hapus filter" title="Hapus filter">↺</button>
+          </div>
+        </header>
+
+        <div class="content-stack">
+          <section class="page-panel card is-active" data-page="overview">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Overview</p>
+                <h2>Peta sistem dan BI di dalamnya</h2>
+                <p class="lede compact">Dashboard ini menampilkan ekosistem lengkap. BI dipakai pengguna untuk membaca data alumni, skill gap, dan employability.</p>
+              </div>
+              <div class="section-chip">Live system view</div>
+            </div>
+            <div class="hero-badges" id="heroBadges"></div>
+            <section class="metrics-grid" id="metricsGrid" aria-label="Key metrics"></section>
+          </section>
+
+          <section class="page-panel card" data-page="ecosystem">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Ekosistem</p>
+                <h2>Modul sistem yang pengguna butuhkan</h2>
+                <p class="lede compact">Halaman ini memetakan modul inti yang bisa dipakai pengguna. BI posisinya sebagai salah satu bagian dari sistem yang lebih besar.</p>
+              </div>
+              <div class="section-chip">Burger view</div>
+            </div>
+            <div id="ecosystemGrid" class="ecosystem-grid"></div>
+          </section>
+
+          <section class="page-panel card" data-page="visual">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">BI dashboard</p>
+                <h2>Heatmap sebaran alumni</h2>
+              </div>
+              <div class="section-chip">Search-aware</div>
+            </div>
+            <div class="visual-grid">
+              <div class="heatmap-card">
+                <div class="heatmap-stage">
+                  <div class="heatmap-map" id="alumniHeatmap" aria-label="Heatmap sebaran alumni"></div>
+                  <div class="heatmap-center" id="heatmapCenter">
+                    <strong>2.184</strong>
+                    <span>alumni terpetakan</span>
+                  </div>
+                </div>
+                <div class="heatmap-meta">
+                  <div class="legend" id="donutLegend"></div>
+                  <div class="heatmap-note" id="heatmapNote"></div>
+                </div>
+              </div>
+              <div class="flow-card">
+                <div class="flow-diagram" id="flowDiagram"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="page-panel card" data-page="roadmap">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Milestone</p>
+                <h2>Milestone implementasi 2026–2030</h2>
+              </div>
+              <div class="section-chip">Gap analysis</div>
+            </div>
+            <div class="chart-full">
+              <div class="chart-title">Diagram batang skill gap</div>
+              <div class="chart-desc">Semakin panjang bar, semakin besar kebutuhan intervensi pada area tersebut.</div>
+              <div id="skillGapChart" class="bar-chart" aria-label="Diagram batang skill gap"></div>
+            </div>
+            <div class="mini-summary" id="skillGapSummary"></div>
+            <div id="roadmap" class="timeline"></div>
+          </section>
+
+          <section class="page-panel card" data-page="investment">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">LAM-PTKes</p>
+                <h2>Readiness meter dan generator ringkasan</h2>
+              </div>
+              <div class="section-chip">Report generator</div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart-title">Kesiapan indikator utama</div>
+              <div class="chart-desc">Indikator ini bisa dipakai sebagai bahan ringkasan laporan akreditasi.</div>
+              <div id="lamReadinessChart" class="bar-chart" aria-label="Kesiapan indikator LAM-PTKes"></div>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 12px">
+              <button class="download-button" id="generateLamReport" type="button">⬇ Download ringkasan laporan</button>
+              <span class="tag">Auto brief</span>
+            </div>
+            <div id="lamReport" class="insight-copy" style="margin-top: 14px"></div>
+          </section>
+
+          <!-- Removed role/governance/quickwins/insight pages per user request -->
+        </div>
+
+        <footer class="footer">
+          <span>Fokus isi: portal alumni, ekosistem sistem, BI dashboard, skill gap, dan employability FK UB</span>
+          <span>Dashboard mandiri HTML/CSS/JS</span>
+        </footer>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
